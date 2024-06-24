@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Expectancy Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: url('https://via.placeholder.com/1500x1000') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            color: black;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        h2{
+            color: black;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Life Expectancy Prediction</h1>
+    <div class="container">
+        <form action="/submit" method="POST">
+            <div class="form-group">
+                <label for="adult mortality">Adult Mortality (Probability of dying 15-60 years/1000)</label>
+                <input type="number" id="adult mortality" name="adult mortality" min=1 max=1000 required>
+            </div>
+            <div class="form-group">
+                <label for="hiv/aids">Deaths due to HIV/AIDS (/1000)</label>
+                <input type="number" id="hiv/aids" name="hiv/aids" min=1 max=1000 required>
+            </div>
+            <div class="form-group">
+                <label for="thinness 1-19 years">Thinness (1-19 years) (%)</label>
+                <input type="number" id="thinness 1-19 years" name="thinness 1-19 years" min=1 max=100 required>
+            </div>
+            <div class="form-group">
+                <label for="thinness 5-9 years">Thinness (5-9 years) (%)</label>
+                <input type="number" id="thinness 5-9 years" name="thinness 5-9 years" min=1 max=100 required>
+            </div>
+            <div class="form-group">
+                <label for="income composition of resources">Probability of Income Composition of Resources</label>
+                <input type="number" id="income composition of resources" name="income composition of resources" min=0 max=1 step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="schooling">Number of Years of Schooling</label>
+                <input type="number" id="schooling" name="schooling" min=1 max=20 required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+    <h2>{{ text }}</h2>
+</body>
+</html>
